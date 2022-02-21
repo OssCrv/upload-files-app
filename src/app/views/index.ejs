@@ -3,7 +3,7 @@
 
 <head>
   <%- include('./partials/head'); %>
-    <title>Checklist de eventos</title>
+    <title>Aplicación de archivos</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
   <%- include('./partials/header'); %>
 
     <div class="row">
-      <% for(let course of [courses]) { %>
+      <% for(let course of courses) { %>
         <a href="/curso/<%= course.id_course %>" class="col-lg-6 mb-4 btn">
           <div class="card bg-light shadow">
             <div class="card-header">

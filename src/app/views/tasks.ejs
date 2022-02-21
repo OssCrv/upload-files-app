@@ -2,17 +2,64 @@
 <html lang="en">
 
 <head>
-  <%- include('./partials/head'); %>
-    <title>Eventos </title>
-
+    <%- include('./partials/head'); %>
+    <title>Tareas</title>
 </head>
 
 <body>
 
-  <%- include('./partials/header'); %>
+    <%- include('./partials/header'); %>
 
+    <!-- Para agregar -->
+    <div class="container m-4 text-center">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addTaskModal"
+            data-bs-whatever="@fat"><span class="material-icons">add</span></button>
+    </div>
+    <!-- Modal para agregar -->
+    <%- include('./partials/addTaskModal', {tasks:tasks}); %>
+
+    <table class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th scope="col" width=100>Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tarea</th>
+                <th scope="col" width=100>Editar</th>
+                <th scope="col" width=100>Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(let task of tasks) { %>
+                <tr>
+                    <th scope="row" align="center" valign="middle">
+                        <%= task.id_task %>
+                    </th>
+                    <td align="center" valign="middle">
+                        <%= task.task_name %>
+                    </td>
+                    <td align="center" valign="middle">
+                        <%= task.task_name %>
+                    </td>
+                    <td align="center" valign="middle"> <a type="button" class="btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#editModal<%= task.id_task %>"
+                            data-bs-whatever="@fat"
+                            style="display: flex;align-items: center;justify-content: center;"><span
+                                class="material-icons">edit</span></a> </td>
+
+                    <td align="center" valign="middle"> <a href="/tasks/delete/<%= task.id_task %>"
+                            class="btn btn-danger"
+                            style="display: flex;align-items: center;justify-content: center;"><span
+                                class="material-icons">delete_forever</span></a></td>
+                </tr>
+                <%- include('./partials/editTaskModal', {task:task}); %>
+                    <% } %>
+        </tbody>
+    </table>
+    </section>
 
     <%- include('./partials/footer'); %>
+
 </body>
 
 </html>

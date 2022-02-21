@@ -8,6 +8,7 @@ module.exports = {
                 if (err) console.error(err)
                 let tasks = rows
 
+                console.log(rows)
                 Courses.get(req.con, (err, rows) => {
                     if (err) console.error(err)
                     let courses = rows.map(row => row.course_name)

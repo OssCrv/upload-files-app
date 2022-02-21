@@ -1,23 +1,23 @@
 <!-- Ventana Modal Edición -->
-<div class="modal fade" id="editModal<%= dependency.id_dependency %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editModal<%= task.id_task %>" tabindex="-1" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Dependencia</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar Tarea</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="dependencies/edit/<%= dependency.id_dependency %>" method="POST">
+        <form action="tasks/edit/<%= task.id_task %>" method="POST">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Id</label>
-            <input type="text" class="form-control" id="recipient-name" name="id_dependency"
-              value="<%= dependency.id_dependency %>" disabled>
+            <input type="text" class="form-control" id="recipient-name" name="id_task"
+              value="<%= task.id_task %>" disabled>
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Nombre de la dependencia</label>
-            <input class="form-control" id="message-text" name="dependency_name"
-              value="<%= dependency.dependency_name %>">
+            <label for="message-text" class="col-form-label">Nombre del tasko</label>
+            <input class="form-control" id="message-text" name="task_name"
+              value="<%= task.task_name %>">
           </div>
 
           <div class="modal-footer">

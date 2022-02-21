@@ -1,23 +1,23 @@
 <!-- Ventana Modal Edición -->
-<div class="modal fade" id="editModal<%= event.id_event %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editModal<%= course.id_course %>" tabindex="-1" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Evento</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar Curso</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="events/edit/<%= event.id_event %>" method="POST">
+        <form action="courses/edit/<%= course.id_course %>" method="POST">
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Id</label>
-            <input type="text" class="form-control" id="recipient-name" name="id_event"
-              value="<%= event.id_event %>" disabled>
+            <input type="text" class="form-control" id="recipient-name" name="id_course"
+              value="<%= course.id_course %>" disabled>
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Nombre del evento</label>
-            <input class="form-control" id="message-text" name="event_name"
-              value="<%= event.event_name %>">
+            <label for="message-text" class="col-form-label">Nombre del curso</label>
+            <input class="form-control" id="message-text" name="course_name"
+              value="<%= course.course_name %>">
           </div>
 
           <div class="modal-footer">
@@ -28,4 +28,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>    

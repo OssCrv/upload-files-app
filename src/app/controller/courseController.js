@@ -54,5 +54,10 @@ module.exports = {
             function (err, rows) {
                 res.redirect("/courses")
             })
+    },
+
+    prueba: function (req, res) {
+        console.log(req.params)
+        res.render("prueba")
     }
 }
