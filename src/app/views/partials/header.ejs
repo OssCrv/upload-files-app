@@ -1,0 +1,59 @@
+<nav class="navbar navbar-dark bg-dark te">
+  <div class="container" style="width: 80%;">
+    <a href="/" class="navbar-brand">Checklist de eventos</a>
+
+
+    <% if (typeof activeSession !="undefined" ) { %>
+        <% if (typeof activeSession.loggedIn !="undefined" ) { %>
+          <a class="btn btn-dark material-icons" data-bs-toggle="offcanvas" href="#offcanvasRight"> menu </a>
+          <% }else{ %>
+            <a class="btn btn-dark" href="/login"> Ingresar </a>
+          <% } %>
+      <% }else{ %>
+        <a class="btn btn-dark" href="/login"> Ingresar </a>
+        <% } %>
+  </div>
+</nav>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Menú</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group">
+      <a href="/dependencies" class="list-group-item">Dependencias</a>
+      <a href="/events" class="list-group-item">Eventos</a>
+      <a href="/innings" class="list-group-item">Turnos</a>
+
+      <a href="/logout" class="list-group-item" data-bs-toggle="modal" data-bs-target="#exitModal">Log Out</a>
+      <div class="modal fade" id="exitModal" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title m-4 text-danger" id="exampleModalLabel"><strong>¿Esta seguro que desea salir?</strong></h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a href="/logout" type="button" class="btn btn-danger">Salir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<div class="container mt-4" style="width: 80%; height:80%; ">
+  <div class="row align-items-center"">
+    <div class=" col align-self-center">

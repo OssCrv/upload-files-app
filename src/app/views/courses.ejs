@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head'); %>
+    <title>Cursos</title>
+</head>
+
+<body>
+
+    <%- include('./partials/header'); %>
+
+    <!-- Para agregar -->
+    <div class="container m-4 text-center">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addcourseModal"
+            data-bs-whatever="@fat"><span class="material-icons">add</span></button>
+    </div>
+    <!-- Modal para agregar -->
+    <%- include('./partials/addcourseModal', {dependencies:dependencies}); %>
+
+    <table class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th scope="col" width=100>Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dependencia</th>
+                <th scope="col" width=100>Editar</th>
+                <th scope="col" width=100>Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(let course of courses) { %>
+                <tr>
+                    <th scope="row" align="center" valign="middle">
+                        <%= course.id_course %>
+                    </th>
+                    <td align="center" valign="middle">
+                        <%= course.course_name %>
+                    </td>
+                    <td align="center" valign="middle">
+                        <%= course.dependency_name %>
+                    </td>
+                    <td align="center" valign="middle"> <a type="button" class="btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#editModal<%= course.id_course %>"
+                            data-bs-whatever="@fat"
+                            style="display: flex;align-items: center;justify-content: center;"><span
+                                class="material-icons">edit</span></a> </td>
+
+                    <td align="center" valign="middle"> <a href="/courses/delete/<%= course.id_course %>"
+                            class="btn btn-danger"
+                            style="display: flex;align-items: center;justify-content: center;"><span
+                                class="material-icons">delete_forever</span></a></td>
+                </tr>
+                <%- include('./partials/editcourseModal', {course:course}); %>
+                    <% } %>
+        </tbody>
+    </table>
+    </section>
+
+    <%- include('./partials/footer'); %>
+
+</body>
+
+</html>

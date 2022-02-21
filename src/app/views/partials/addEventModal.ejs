@@ -1,0 +1,33 @@
+<div class="modal fade" id="addeventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="events/create" method="POST">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nombre del evento</label>
+                        <input type="text" class="form-control" id="recipient-name" name="event_name"
+                            placeholder="Ej: Integración Rondalla" required>
+                    </div>
+                    <div class="mb-3">
+                            <label for="inputDependency">Dependencia</label>
+                            <select id="inputDependency" class="form-control", name="dependency_name">
+                                <option selected>Escoger...</option>
+                                <% for(let dependency of dependencies) { %>                        
+                                    <option><%= dependency %></option>
+                                <% } %>
+                            </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Enviar">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

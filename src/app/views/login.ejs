@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head'); %>
+    <title>Ingreso</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 mt-4">
+
+          <div class="card shadow">
+            <div class="card-title text-center border-bottom">
+              <h2 class="p-3 m-2">Ingreso a plataforma</h2>
+            </div>
+            <div class="card-body">
+              <form class="form-group" method="POST" action="auth">
+                <div class="d-flex justify-content-center">
+                  <img src="/resources/images/logo_login.png" style="width: 80%" />
+                </div>
+                <h2 class="p-3">Ingresa</h2>
+                <div class="mb-4">
+                  <input type="text" class="form-control" name="user" placeholder="Usuario" required="" autofocus="" />
+                </div>
+
+                <div class="mb-4">
+                  <input type="password" class="form-control" name="pass" placeholder="Contraseña" required="" />
+                </div>
+                <div class="d-flex mb-4 justify-content-center">
+                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+</html>
