@@ -58,6 +58,6 @@ module.exports = {
 
     prueba: function (req, res) {
         console.log(req.params)
-        res.render("uploader")
+        res.render("tarea")
     }
 }

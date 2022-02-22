@@ -10,7 +10,6 @@ router.get('/', courseController.index);
 
 router.get('/curso/:id', courseController.prueba);
 
-
 router.get('/upload', uploadsController.fileUploadForm);
 router.post('/upload', uploadsController.uploadFile);
 
