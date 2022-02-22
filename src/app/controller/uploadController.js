@@ -8,6 +8,10 @@ module.exports = {
     },
 
     uploadFile: function (req, res) {
+
+        console.log(req.body);
+        console.log(req.params);
+
         let upload = multer({
             storage: fileUpload.files.storage(),
             allowedFile: fileUpload.files.allowedFile
@@ -27,5 +31,7 @@ module.exports = {
 
         })
 
-    }
+    },
+
+    
 }

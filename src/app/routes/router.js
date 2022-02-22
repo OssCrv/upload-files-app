@@ -2,16 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 const courseController = require('../controller/courseController')
-const uploadsController = require('../controller/uploadsController')
+const uploadController = require('../controller/uploadController')
 const taskController = require('../controller/taskController')
 const authController = require('../controller/authController')
 
 router.get('/', courseController.index);
 
-router.get('/curso/:id', courseController.prueba);
+router.get('/curso/:id', taskController.listTareas);
 
-router.get('/upload', uploadsController.fileUploadForm);
-router.post('/upload', uploadsController.uploadFile);
+router.post("/upload/add/:fkTask", uploadController.uploadFile);
+
+router.get('/upload', uploadController.fileUploadForm);
+router.post('/upload', uploadController.uploadFile);
 
 router.get('/login', authController.login);
 router.post('/auth', authController.auth);

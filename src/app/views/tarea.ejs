@@ -4,6 +4,8 @@
 <head>
     <%- include('./partials/head'); %>
     <title>Tarea</title>
+    <link rel="stylesheet" href="/resources/css/upload.css">
+
 </head>
 
 <body>
@@ -12,10 +14,11 @@
 
     <!-- Para agregar -->
     <div class="container m-4 text-center">
-        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addTaskModal"
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addUploadModal"
             data-bs-whatever="@fat"><span class="material-icons">add</span></button>
     </div>
     <!-- Modal para agregar -->
+    <%- include('./partials/addUploadModal'); %>
 
     <table class="table table-striped table-bordered table-lg" cellspacing="0" width="100%">
         <thead>
@@ -23,7 +26,6 @@
                 <th scope="col" width=100>Id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Tarea</th>
-                <th scope="col" width=100>Editar</th>
                 <th scope="col" width=100>Borrar</th>
             </tr>
         </thead>
@@ -40,11 +42,6 @@
                     <td align="center" valign="middle">
                         <%= task %>
                     </td>
-                    <td align="center" valign="middle"> <a type="button" class="btn btn-primary"
-                            data-bs-toggle="modal" data-bs-target="#editModal<%= task %>"
-                            data-bs-whatever="@fat"
-                            style="display: flex;align-items: center;justify-content: center;"><span
-                                class="material-icons">edit</span></a> </td>
 
                     <td align="center" valign="middle"> <a href="/tasks/delete/<%= task %>"
                             class="btn btn-danger"
@@ -57,7 +54,7 @@
     </section>
 
     <%- include('./partials/footer'); %>
-
+    <script type="text/javascript" src="/resources/js/upload.js"></script>
 </body>
 
 </html>

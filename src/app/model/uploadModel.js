@@ -34,5 +34,21 @@ module.exports = {
 
     getBytask: function (con, fk, callback) {
         con.query(`SELECT * FROM uploads WHERE fk_task=${fk};`, callback)
-    }
+    },
+
+    getAllUploads: function (con, callback) {
+        con.query(`SELECT id_upload, upload_name, file_url, student_name, is_delivered, task_name, course_name
+        FROM uploads
+            JOIN tasks
+            ON uploads.fk_task = tasks.id_task
+            JOIN courses
+            ON tasks.fk_course = courses.id_course;`, callback)
+    },
+    getAllUploadsByCourse: function (con, fk, callback) {
+        con.query(`SELECT *
+        FROM uploads
+            JOIN tasks
+            ON uploads.fk_task = tasks.id_task
+            WHERE tasks.fk_course = ${fk};`, callback)
+    },
 }

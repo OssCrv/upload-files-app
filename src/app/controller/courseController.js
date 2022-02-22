@@ -1,5 +1,6 @@
 const courses = require("../model/courseModel")
 
+
 module.exports = {
 
     index: function (req, res) {
@@ -56,8 +57,4 @@ module.exports = {
             })
     },
 
-    prueba: function (req, res) {
-        console.log(req.params)
-        res.render("tarea")
-    }
 }

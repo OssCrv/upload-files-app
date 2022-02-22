@@ -1,5 +1,6 @@
 const Tasks = require("../model/taskModel")
 const Courses = require("../model/courseModel")
+const Uploads = require("../model/uploadModel")
 
 module.exports = {
     list: function (req, res) {
@@ -60,5 +61,33 @@ module.exports = {
                 if (err) console.error(err)
                 res.redirect("/tasks")
             })
+    },
+
+    listTareas: function (req, res) {
+        console.log(req.params.id)
+
+        console.log("1!")
+        const fkCourse= req.params.id
+        let course = {}
+        
+        Tasks.getBycourse(req.con, fkCourse, (err, rows) => {
+            if(err) console.error(err)
+            let tasks = []
+            console.log("2!")
+            
+            rows.forEach(row => {
+                if(!course.course_name) course.course_name = row.course_name
+                if(!tasks.includes(row.task_name)) tasks.push(row.task_name)
+            })
+            console.log("3!")
+            console.table(tasks)
+            
+            Uploads.getAllUploadsByCourse(req.con, fkCourse, (err, rows) => {
+                if(err) console.log(err)
+                console.log("4!")
+                console.table(rows)
+                res.render("tareas")
+            })
+        })
     }
 }

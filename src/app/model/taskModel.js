@@ -33,6 +33,6 @@ module.exports = {
     },
 
     getBycourse: function (con, fk, callback) {
-        con.query(`SELECT * FROM tasks WHERE fk_course=${fk};`, callback)
+        con.query(`SELECT * FROM tasks JOIN courses ON tasks.fk_course=courses.id_course WHERE fk_course=${fk};`, callback)
     }
 }
