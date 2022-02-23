@@ -1,7 +1,7 @@
 <div class="card bg-light shadow">
 
     <div class="card-header">
-        <h3 class="text-center">Tarea <%= object %>
+        <h3 class="text-center"> <%= task.task_name  %>
         </h3>
     </div>
 
@@ -11,9 +11,10 @@
             <!--  -->
 
             <ul class="list-group">
-                <% for(let event of [1,2,3,4]) { %>
+                <% for(let student of task.students) { %>
                     <li class="list-group-item">
-                        <%= event %>
+                        <%= student %>
+
                     </li>
                     <% } %>
             </ul>

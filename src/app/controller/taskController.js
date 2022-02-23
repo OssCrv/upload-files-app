@@ -64,29 +64,56 @@ module.exports = {
     },
 
     listTareas: function (req, res) {
+        console.log("req.params.id")
         console.log(req.params.id)
 
-        console.log("1!")
         const fkCourse= req.params.id
         let course = {}
+        let tasks = []
         
         Tasks.getBycourse(req.con, fkCourse, (err, rows) => {
             if(err) console.error(err)
-            let tasks = []
-            console.log("2!")
+            
+            console.log("Tasks.getBycourse")
+            console.table(rows)
             
             rows.forEach(row => {
                 if(!course.course_name) course.course_name = row.course_name
-                if(!tasks.includes(row.task_name)) tasks.push(row.task_name)
+                if(!tasks.includes(row.task_name)) {
+                    let aux = {}
+                    aux.id_task = row.id_task
+                    aux.task_name = row.task_name
+                    aux.students = []
+                    tasks.push(aux)
+                }
             })
-            console.log("3!")
+
+            console.log("course")
+            console.log(course)
+            console.log("tasks")
             console.table(tasks)
             
             Uploads.getAllUploadsByCourse(req.con, fkCourse, (err, rows) => {
                 if(err) console.log(err)
-                console.log("4!")
+                
+                console.log("Uploads.getAllUploadsByCourse")
                 console.table(rows)
-                res.render("tareas")
+
+                tasks.forEach(task => {
+                    rows.forEach(row => {
+                        if(row.task_name == task.task_name) task.students.push(row.student_name)
+                    })
+                })
+
+                console.log("tasks")
+                console.log(tasks)
+                
+
+                res.render("tareas", {
+                    fkCourse: fkCourse,
+                    tasks: tasks
+                })
+                
             })
         })
     }

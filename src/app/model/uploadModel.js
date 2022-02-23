@@ -37,7 +37,7 @@ module.exports = {
     },
 
     getAllUploads: function (con, callback) {
-        con.query(`SELECT id_upload, upload_name, file_url, student_name, is_delivered, task_name, course_name
+        con.query(`SELECT id_upload, upload_name, student_name, is_delivered, task_name, course_name, path_file
         FROM uploads
             JOIN tasks
             ON uploads.fk_task = tasks.id_task

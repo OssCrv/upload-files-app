@@ -15,7 +15,7 @@
     <!-- Para agregar -->
     <div class="container m-4 text-center">
         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addUploadModal"
-            data-bs-whatever="@fat"><span class="material-icons">add</span></button>
+            data-bs-whatever="@fat"><span class="material-icons">file_upload</span></button>
     </div>
     <!-- Modal para agregar -->
     <%- include('./partials/addUploadModal'); %>
@@ -26,24 +26,30 @@
                 <th scope="col" width=100>Id</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Tarea</th>
+                <th scope="col" width=100>Descargar</th>
                 <th scope="col" width=100>Borrar</th>
             </tr>
         </thead>
         <tbody>
 
-            <% for(let task of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18]) { %>
+            <% for(let upload of uploads) { %>
                 <tr>
                     <th scope="row" align="center" valign="middle">
-                        <%= task %>
+                        <%= upload.id_upload %>
                     </th>
                     <td align="center" valign="middle">
-                        <%= task %>
+                        <%= upload.student_name %>
                     </td>
                     <td align="center" valign="middle">
-                        <%= task %>
+                        <%= upload.upload_name %>
                     </td>
 
-                    <td align="center" valign="middle"> <a href="/tasks/delete/<%= task %>"
+                    <td align="center" valign="middle"> <a href="/uploads/download/<%= upload.id_upload %>"
+                            class="btn btn-primary"
+                            style="display: flex;align-items: center;justify-content: center;"><span
+                                class="material-icons">file_download</span></a></td>
+
+                    <td align="center" valign="middle"> <a href="/uploads/delete/<%= upload %>"
                             class="btn btn-danger"
                             style="display: flex;align-items: center;justify-content: center;"><span
                                 class="material-icons">delete_forever</span></a></td>

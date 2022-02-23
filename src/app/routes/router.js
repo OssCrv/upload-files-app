@@ -8,6 +8,8 @@ const authController = require('../controller/authController')
 
 router.get('/', courseController.index);
 
+router.get("/curso/:fk/tarea/:id", uploadController.listUploads)
+
 router.get('/curso/:id', taskController.listTareas);
 
 router.post("/upload/add/:fkTask", uploadController.uploadFile);
